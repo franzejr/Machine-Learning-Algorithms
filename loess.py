@@ -2,6 +2,12 @@ from pylab import *
 from importer import *
 import numpy as np
 
+'''
+LOESS and LOWESS (locally weighted scatterplot smoothing) are two strongly 
+related regression modeling methods that combine multiple regression models in a 
+k-nearest-neighbor-based meta-model. "LOESS" is a later generalization of LOWESS; 
+although it is not a true initialism, it may be understood as standing for "LOcal regrESSion"
+'''
 def loess(x,h,xp,yp):
 	w=exp(-0.5*(((x-xp)/h)**2)/sqrt(2*pi*h**2))
 	b=sum(w*xp)*sum(w*yp) - sum(w)*sum(w*xp*yp)
