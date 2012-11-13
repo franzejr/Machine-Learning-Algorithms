@@ -14,13 +14,12 @@ def loess(x,h,xp,yp):
 	b /= sum(w*xp)**2 - sum(w)*sum(x*xp**2)
 	a=(sum(w*yp)-b*sum(w*xp))/sum(w)
 	return a+b*x
-	
+
 #d=loadtxt("ex.csv",delimiter=',')
 ru=importer("ru.csv")
-d=np.array(ru[1])
-e=np.array(ru[2])
+d=np.array(ru[1],dtype=float)
+e=np.array(ru[2],dtype=float)
 
-f=np.array([1,2,3,4])
 s1,s2 = [],[]
 
 for k in d:
@@ -32,7 +31,7 @@ ylabel("Draft Number")
 
 
 plot(d,e,'o',color='white',markersize=7,linewidth=3)
-plot(d,array(s1),'k-',d,array(s2),'k-')
+plot(d,array(s1),'k-',d,array(s2),'k--')
 
 #q=4
 #axis([1-q,366+q,1-q,366+q])

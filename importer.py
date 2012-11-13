@@ -13,7 +13,7 @@ def convertToNumber(hora):
 	Import from a file and can return the dict with all the informations you want
 '''
 def importer(filename):
-	f = csv.reader(open(filename), delimiter=',')
+	f = csv.reader(open(filename), delimiter=';')
 	chegadasAtrasos = []
 	horasChegadas = []
 	atrasos = []

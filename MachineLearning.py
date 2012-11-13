@@ -4,42 +4,41 @@
 
 from numpy import *
 from pylab import *
+from importer import *
+from linear_regression import *
+import numpy as np
 import matplotlib.pyplot as plt
-import sys
-import csv
-
-#Function to get the time and return number which can represent this number
-def convertToNumber(hora):
-	hora_vetor = hora.split(":")
-	return (int(hora_vetor[0])*3600 + int(hora_vetor[1])*60 + int(hora_vetor[2]))
-
-#LinearRegression
-def linearRegression(xi,y):
-	A = array([ xi,ones(140)])
-	w = linalg.lstsq(A.T,y)[0]
-	
-	# plotting the line
-	line = w[0]*xi+w[1] # regression line
-	plt.plot(xi,line,'r-',xi,y,'o')
 	
 	
 def main():
 	#print sys.argv
 
-	f = csv.reader(open('ru.csv'), delimiter=',')
+	f = importer("ru.csv")
+
+	x = np.array(f[1],dtype=float)
+	y = np.array(f[2],dtype=float)
+	print x
+
+
+	#Initialize theta parameters
+	theta0 = 0.
+	theta1 = 0.
+
+	#Some gradient descent settings
+	iterations = 50
+	alpha = 0.000000001
+
+
+	theta0, theta1 =gradient_descent(x, y, theta0, theta1, alpha, iterations)
+
+	x1 = linspace(38000,50000,5)
+
 	plt.xlabel("Hora de Chegada")
 	plt.ylabel("Tempo de espera (minutos)")
-	chegadasAtrasos = []
-	horasChegadas = []
-	atrasos = []
-	for [DataHora,DiaSemana,atraso,HoraChegada,Curso,FurouFila] in f:
-		chegadasAtrasos.append([convertToNumber(HoraChegada),atraso])
-		horasChegadas.append(convertToNumber(HoraChegada))
-		atrasos.append(atraso)
-		plt.scatter(convertToNumber(HoraChegada),int(atraso))
-	linearRegression(horasChegadas,atrasos)
-	#print atrasos
-	#print horasChegadas
-	#plt.show()
-
+	plt.plot(f[1],f[2],'o',color='white',markersize=7,linewidth=3)
+	plt.plot(x1, x1.dot(theta1) + theta0,'k-')
+	plt.show()
+	print "Theta 0:"+ str(theta0)
+	print "Theta 1:"+ str(theta1)
+	print "Equation: "+ str(theta1)+"x + "+str(theta0)+"b" 
 main()
