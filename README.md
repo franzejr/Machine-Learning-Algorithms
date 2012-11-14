@@ -1,1 +1,5 @@
-Machine Learning
+#Machine Learning
+
+##Methods
++ Linear Regression
++ LOESS

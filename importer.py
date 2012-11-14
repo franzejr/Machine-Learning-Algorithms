@@ -2,6 +2,10 @@
 #Filename: importer.py
 # @victorfarias @franzejr
 
+'''
+Some person who wants to get some CSV File need to implement a method similar to importer method
+'''
+
 import csv
 
 #Function to get the time and return number which can represent this number

@@ -1,3 +1,7 @@
+#!/usr/bin/python 
+#Filename: linear_regression.py
+# @victorfarias @franzejr
+
 from pylab import *
 from importer import *
 import numpy as np

@@ -9,7 +9,10 @@ from linear_regression import *
 import numpy as np
 import matplotlib.pyplot as plt
 	
-	
+'''
+Main function
+
+'''
 def main():
 	#print sys.argv
 
